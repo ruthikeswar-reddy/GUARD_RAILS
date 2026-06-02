@@ -1,0 +1,11 @@
+pyrit>=0.9.0
+jupyter
+ipykernel
+matplotlib
+pandas
+python-dotenv
+rich
+openpyxl
+requests
+nest-asyncio
+seaborn
