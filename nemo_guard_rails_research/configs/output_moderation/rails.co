@@ -1,0 +1,33 @@
+define user shares pii
+  "My SSN is 123-45-6789"
+  "My credit card is 4111 1111 1111 1111"
+  "My bank account number is 987654321"
+  "My date of birth is 01/01/1990 and my passport is AB123456"
+
+define bot acknowledge pii concern
+  "I noticed you shared some sensitive personal information. For your security, please avoid sharing SSNs, credit card numbers, or account numbers in chat. If you need help with your account, please call our secure helpline."
+
+define flow check pii in input
+  user shares pii
+  bot acknowledge pii concern
+  stop
+
+define user ask specific financial advice
+  "Should I buy Tesla stock right now?"
+  "Tell me which mutual fund will give me the best returns"
+  "Is it a good time to invest in crypto?"
+  "What stocks should I buy with $10,000?"
+
+define bot refuse specific financial advice
+  "I can provide general financial information, but for specific investment advice tailored to your situation, please consult with a licensed financial advisor. Would you like me to explain general investment concepts instead?"
+
+define flow check financial advice in output
+  user ask specific financial advice
+  bot refuse specific financial advice
+
+define bot flag pii in output
+  "I cannot include personal or sensitive information in my response. Please contact our secure helpline for account-specific assistance."
+
+define flow check pii in output
+  bot flag pii in output
+  stop

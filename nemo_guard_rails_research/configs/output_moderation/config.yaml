@@ -1,0 +1,21 @@
+models:
+  - type: main
+    engine: openai
+    model: gpt-4o-mini
+
+instructions:
+  - type: general
+    content: |
+      You are a customer support assistant for a financial services company.
+      Never share specific financial advice, account numbers, or PII.
+      Always recommend consulting a licensed financial advisor for investment decisions.
+
+rails:
+  input:
+    flows:
+      - check pii in input
+
+  output:
+    flows:
+      - check pii in output
+      - check financial advice in output

@@ -1,0 +1,22 @@
+models:
+  - type: main
+    engine: openai
+    model: gpt-4o-mini
+
+instructions:
+  - type: general
+    content: |
+      You are a helpful AI assistant for an enterprise software company.
+      You only answer questions related to software engineering, DevOps,
+      cloud infrastructure, and related technical topics.
+      You do not discuss politics, religion, personal advice, or unrelated topics.
+
+rails:
+  input:
+    flows:
+      - check input off topic
+      - check jailbreak
+
+  output:
+    flows:
+      - check output off topic

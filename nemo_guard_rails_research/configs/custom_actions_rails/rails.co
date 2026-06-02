@@ -1,0 +1,12 @@
+define flow check content with custom action
+  user ...
+  $is_safe = execute check_content_safety(user_input=$last_user_message)
+  if not $is_safe
+    bot "I'm unable to process this request as it may violate our content policy."
+    stop
+
+define flow validate output with custom action
+  bot ...
+  $passes_validation = execute validate_output(bot_output=$last_bot_message)
+  if not $passes_validation
+    bot "I need to revise my response to ensure it meets our standards."
